@@ -12,21 +12,20 @@ use yii\widgets\ActiveForm;
 
 <div class="prospect-card-form">
 
-    <?php $form = ActiveForm::begin([
-    	'options' => [ 
-			'class' => 'form-horizontal'
+    <?php $form = ActiveForm::begin ( [ 
+		'options' => [ 
+				'class' => 'form-horizontal' 
 		],
-		'fieldConfig' => [
-			'template' => "{label}\n<div class=\"col-lg-8\">{input}{error}</div>",
-			'labelOptions' => [ 
-				'class' => 'col-lg-4 control-label'
-								] 
-						] 
-				] );
-				?>
+		'fieldConfig' => [ 
+				'template' => "{label}\n<div class=\"col-lg-8\">{input}{error}</div>",
+				'labelOptions' => [ 
+						'class' => 'col-lg-4 control-label' 
+				] 
+		] 
+	] ); ?>
 	
 	<legend>Information Customer Prospect</legend>
-	<div class="row">	
+	<div class="row">
 		<div class="col-lg-6">
 			
 		    <?= $form->field($model, 'prospect_card_number')->textInput(['maxlength' => 25])?>
@@ -55,7 +54,7 @@ use yii\widgets\ActiveForm;
 		    <?= $form->field($model, 'other_information')->textarea(['rows' => 6]) ?>
 		</div>
 	</div>
-	
+
 	<legend>Contact Persons</legend>
 	<div class="row">
 		<div class="col-lg-6">

@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a(Yii::t('app', 'Quotation'), ['print', 'id' => $model->id], ['class' => 'btn btn-success', 'onclick'=>'']) ?>
+        <?= Html::a(Yii::t('app', 'Quotation'), ['quotation/create', 'id' => $model->id], ['class' => 'btn btn-success', 'onclick'=>'']) ?>
         <?= Html::buttonInput(Yii::t('app', 'Print'), ['class' => 'btn btn-default', 'onclick'=>'popup(\''.Url::to(['print', 'id'=>$model->id]).'\')']) ?>
         <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info pull-right']) ?>
     </p>
