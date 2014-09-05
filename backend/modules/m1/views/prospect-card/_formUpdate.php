@@ -120,32 +120,7 @@ use app\models\Parameter;
 		   	<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 	<div class="row">
-	<?php
-// 	echo TabularForm::widget ( [ 
-// 			'dataProvider' => $dataProvider,
-// 			'form' => $form,
-// 			'attributes' => $attribs,
-// 			'gridSettings' => [ 
-// 					'floatHeader' => true,
-// 					'panel' => [ 
-// 							'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-book"></i> Manage Books</h3>',
-// 							'type' => GridView::TYPE_PRIMARY,
-// 							'after' => Html::a ( '<i class="glyphicon glyphicon-plus"></i> Add New', '#', [ 
-// 									'class' => 'btn btn-success' 
-// 							] ) . ' ' . Html::a ( '<i class="glyphicon glyphicon-remove"></i> Delete', '#', [ 
-// 									'class' => 'btn btn-danger' 
-// 							] ) . ' ' . Html::submitButton ( '<i class="glyphicon glyphicon-floppy-disk"></i> Save', [ 
-// 									'class' => 'btn btn-primary' 
-// 							] ) 
-// 					] 
-// 			] 
-// 	] );
-// 	echo TabularForm::widget ( [ 
-// 			'dataProvider' => $dataProvider,
-// 			'form' => $form,
-// 			'attributes' => $attribs 
-// 	] );
-	?>
+
 	</div>
     <?php ActiveForm::end(); ?>
 </div>
