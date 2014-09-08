@@ -51,19 +51,19 @@ class Parameter extends \yii\db\ActiveRecord
         ];
     }
     
-    public function getCustomerType()
+    public static function getCustomerType()
     {
     	$customer_type = Parameter::findAll(['type'=>'customer_type']);
     	return ArrayHelper::map($customer_type, 'code', 'name');
     }
     
-    public function getCompanyTitle()
+    public static function getCompanyTitle()
     {
     	$customer_type = Parameter::findAll(['type'=>'company_title']);
     	return ArrayHelper::map($customer_type, 'code', 'name');
     }
     
-    public function getBusinessType()
+    public static function getBusinessType()
     {
     	$customer_type = Parameter::findAll(['type'=>'business_type']);
     	return ArrayHelper::map($customer_type, 'code', 'name');

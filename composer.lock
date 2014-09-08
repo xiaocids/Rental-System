@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2de0fdf6c0a9447286b4f7d44390ba08",
+    "hash": "832e33728c0c4eb43449eb7f9a842ee4",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -1367,8 +1367,8 @@
         "kartik-v/yii2-editable": 20,
         "kartik-v/yii2-grid": 20,
         "kartik-v/yii2-builder": 20,
-        "mpdf/mpdf": 20,
-        "mdmsoft/yii2-autonumber": 20
+        "mdmsoft/yii2-autonumber": 20,
+        "mpdf/mpdf": 20
     },
     "platform": {
         "php": ">=5.4.0"

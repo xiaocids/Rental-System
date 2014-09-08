@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\User;
 use mPDF;
+use \cinghie\tcpdf\TCPDF;
 
 /**
  * ProspectCardController implements the CRUD actions for ProspectCard model.
@@ -186,7 +187,7 @@ class ProspectCardController extends Controller {
 			$model->created_by = 1;
 			if ($model->save ( false )) {
 				return $this->redirect ( [ 
-						'view',
+						'update',
 						'id' => $model->id 
 				] );
 			} else {
@@ -205,22 +206,19 @@ class ProspectCardController extends Controller {
 	
 	public function actionPrint($id){
 		$this->layout = '//reports/noHeader';
-		$mpdf = new mPDF('utf-8', 'A4');
-		//$mpdf->setHeader($header,'O');
-		$mpdf->SetAutoFont(AUTOFONT_ALL);
-		$mpdf->SetTitle("Acme Trading Co. - Invoice");
-		$mpdf->SetHTMLFooter('<p style="font-size:xx-small;"><strong>Class = Classification</strong>: <strong>(I)</strong> Intoduce Letter, <strong>(QA)</strong> Qualification-Approach, <strong>(CON)</strong> Conviction, <strong>(QUO)</strong> Quotation, <strong>(D)</strong> Demonstration, <strong>(CL)</strong> Closing.</p>
-				<p style="font-size:xx-small;"><strong>V=Visit, C=Call</strong></p>');
-		$mpdf->WriteHTML($this->render( 'print', [
-				'model' => $this->findModel ( $id )
-		]));
-		
-		//$mpdf->WriteHTML('Hello<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>world!');
-		$mpdf->Output('#'.$this->findModel ( $id )->prospect_card_number.'.pdf', 'I');
-		
-// 		return $this->renderPartial ( 'print', [
-// 				'model' => $this->findModel ( $id )
-// 		] );
+			
+			$mpdf = new mPDF();
+			$mpdf->setHeader($header,'O');
+ 			$mpdf->SetAutoFont(AUTOFONT_ALL);
+ 			$mpdf->SetTitle("Acme Trading Co. - Invoice");
+ 			$mpdf->SetHTMLFooter('<p style="font-size:xx-small;"><strong>Class = Classification</strong>: <strong>(I)</strong> Intoduce Letter, <strong>(QA)</strong> Qualification-Approach, <strong>(CON)</strong> Conviction, <strong>(QUO)</strong> Quotation, <strong>(D)</strong> Demonstration, <strong>(CL)</strong> Closing.</p>
+ 			<p style="font-size:xx-small;"><strong>V=Visit, C=Call</strong></p>');
+			$mpdf->WriteHTML($this->render( 'print', [
+			'model' => $this->findModel ( $id )
+			]));
+			
+			$mpdf->Output('#'.$this->findModel ( $id )->prospect_card_number.'.pdf', 'I');
+			exit;		
 	}
 	
 	public function actionCompanyList($q = null) {

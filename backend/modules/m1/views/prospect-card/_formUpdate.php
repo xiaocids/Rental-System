@@ -54,11 +54,13 @@ use app\models\Parameter;
 	<div class="row">
 		<div class="col-lg-6">
 			
-		    <?= $form->field($model, 'prospect_card_number')->textInput(['maxlength' => 25])?>
+		    <?= $form->field($model, 'prospect_card_number')->textInput(['maxlength' => 25, 'readonly'=>true])?>
 		    
+		    <?= $form->field($model, 'marketing_officer_name')->textInput(['maxlength' => 100, 'readonly'=>true])?>
+		
 		    <?= $form->field($model, 'customer_type')->dropDownList(Parameter::getCustomerType(), ['prompt'=>'-Select']);?>	    
 		    
-		    <?= $form->field($model, 'marketing_officer_name')->textInput(['maxlength' => 100])?>
+			<?= $form->field($model, 'business_type')->dropDownList(Parameter::getBusinessType(), ['prompt'=>'-Select']);?>
 		
 			<div class="form-group">
 				<?= Html::activeLabel($model, 'company_name', ['class'=>'col-sm-4 control-label']); ?>
@@ -77,21 +79,30 @@ use app\models\Parameter;
 		    <?php //$form->field($model, 'company_name')->textInput(['maxlength' => 150])?>
 		    <?php // $form->field($model, 'company_title')->textInput(['maxlength' => 10]) ?>
 		
-		    <?= $form->field($model, 'company_address')->textarea(['rows' => 3])?>
-		
-		    <?= $form->field($model, 'business_type')->dropDownList(Parameter::getBusinessType(), ['prompt'=>'-Select']);?>
-		
+		    <?= $form->field($model, 'company_address')->textarea(['rows' => 3])?>	
 		</div>
 
 		<div class="col-lg-6">
-			<?= $form->field($model, 'phone_code_area')->textInput(['maxlength' => 6]) ?>
-			<?= $form->field($model, 'telephone')->textInput(['maxlength' => 25]) ?>
-			
+			<div class="form-group">
+				<?= Html::activeLabel($model, 'telephone', ['class'=>'col-sm-4 control-label']); ?>
+				
+					<div class="col-xs-2">
+						<?= Html::activeTextInput($model, 'phone_code_area', ['class'=>'form-control col-sm-2']); ?>
+					</div>
+					<div class="col-xs-6">
+						<?= Html::activeTextInput($model, 'telephone', ['class'=>'form-control col-sm-4']); ?>
+					</div>
+				
+				<div class="col-sm-offset-4 col-sm-8">
+					<?= Html::error($model, 'company_name',['class'=>''])?>
+				</div>							
+			</div>
+						
 			<?= $form->field($model, 'fax')->textInput(['maxlength' => 25]) ?>
 			
 			<?= $form->field($model, 'email')->textInput(['maxlength' => 200]) ?>
 			
-		    <?= $form->field($model, 'other_information')->textarea(['rows' => 3]) ?>
+		    <?= $form->field($model, 'other_information')->textarea(['rows' => 6]) ?>
 		</div>
 	</div>
 
