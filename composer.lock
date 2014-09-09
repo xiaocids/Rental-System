@@ -325,12 +325,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-builder.git",
-                "reference": "e302475864a1d06c940aa1d1f9532cb4b8b1562e"
+                "reference": "c431dda7d0d3c2954c00c2db8020067e05122073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/e302475864a1d06c940aa1d1f9532cb4b8b1562e",
-                "reference": "e302475864a1d06c940aa1d1f9532cb4b8b1562e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/c431dda7d0d3c2954c00c2db8020067e05122073",
+                "reference": "c431dda7d0d3c2954c00c2db8020067e05122073",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2014-08-28 13:46:02"
+            "time": "2014-09-08 10:55:57"
         },
         {
             "name": "kartik-v/yii2-checkbox-x",
@@ -1370,6 +1370,7 @@
         "mdmsoft/yii2-autonumber": 20,
         "mpdf/mpdf": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.4.0"
     },

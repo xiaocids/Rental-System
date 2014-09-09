@@ -68,13 +68,13 @@ use app\models\Parameter;
 					<div class="col-xs-6">
 						<?= Html::activeTextInput($model, 'company_name', ['class'=>'form-control col-sm-4']); ?>
 					</div>
-					<div class="col-xs-2">
+				<div class="col-xs-2">
 						<?= Html::activeDropDownList($model, 'company_title', Parameter::getCompanyTitle() ,['class'=>'form-control col-sm-4', 'prompt'=>'-Select']); ?>
 					</div>
-				
+
 				<div class="col-sm-offset-4 col-sm-8">
 					<?= Html::error($model, 'company_name',['class'=>''])?>
-				</div>							
+				</div>
 			</div>
 		    <?php //$form->field($model, 'company_name')->textInput(['maxlength' => 150])?>
 		    <?php // $form->field($model, 'company_title')->textInput(['maxlength' => 10]) ?>
@@ -89,13 +89,13 @@ use app\models\Parameter;
 					<div class="col-xs-2">
 						<?= Html::activeTextInput($model, 'phone_code_area', ['class'=>'form-control col-sm-2']); ?>
 					</div>
-					<div class="col-xs-6">
+				<div class="col-xs-6">
 						<?= Html::activeTextInput($model, 'telephone', ['class'=>'form-control col-sm-4']); ?>
 					</div>
-				
+
 				<div class="col-sm-offset-4 col-sm-8">
 					<?= Html::error($model, 'company_name',['class'=>''])?>
-				</div>							
+				</div>
 			</div>
 						
 			<?= $form->field($model, 'fax')->textInput(['maxlength' => 25]) ?>
@@ -128,10 +128,15 @@ use app\models\Parameter;
 	<div class="row"></div>
 
 	<div class="form-group">
-		   	<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		   	<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])?>
 	</div>
 	<div class="row">
-
+	<?php //echo TabularForm::widget ( [ 
+// 			'dataProvider' => $dataProvider,
+// 			'form' => $form,
+// 			'attributes' => $attribs,
+			
+// 	] ); ?>
 	</div>
     <?php ActiveForm::end(); ?>
 </div>

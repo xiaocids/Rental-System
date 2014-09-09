@@ -64,10 +64,7 @@ class CurrentAsset extends \yii\db\ActiveRecord
     }
     
     public function getFormAttribs() {
-    	return [ 
-				'name' => [ 
-						'type' => TabularForm::INPUT_TEXT 
-				],
+    	return [
 				'brand_type' => [ 
 						'type' => TabularForm::INPUT_STATIC,
 						'label' => 'Brand Type',
