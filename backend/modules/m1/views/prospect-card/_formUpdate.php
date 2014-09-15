@@ -17,38 +17,39 @@ use app\models\Parameter;
 
 <div class="prospect-card-form">
 
-    <?php $form = ActiveForm::begin ( [ 
+    <?php
+				
+$form = ActiveForm::begin ( [ 
 						'type' => ActiveForm::TYPE_HORIZONTAL,
 						'formConfig' => [ 
-								'labelSpan' => 2,
+								'labelSpan' => 4,
 								'deviceSize' => ActiveForm::SIZE_SMALL 
 						],
 						'fieldConfig' => [ 
 								'template' => "{label}\n<div class=\"\">{input}{error}</div>" 
-						]
-						,
+						],
 						'formConfig' => [ 
 								'labelSpan' => 4,
 								'deviceSize' => ActiveForm::SIZE_SMALL 
 						] 
 				] );
-    
-    	   		$query = CurrentAsset::find();
+				
+				$query = CurrentAsset::find ();
 				// add your conditions
-				$query->andWhere ('b_propect_id = '.$model->id);
+				$query->andWhere ( 'b_propect_id = ' . $model->id );
 				$dataProvider = new \yii\data\ActiveDataProvider ( [ 
 						'query' => $query,
 						'pagination' => [ 
 								'pagesize' => 10 
 						] 
 				] );
-    	$modelAsset = new CurrentAsset();
-    	$attribs = $modelAsset->formAttribs;
-		$attribs ['attributes'] ['status'] = [ 
-			'type' => TabularForm::INPUT_WIDGET,
-			'widgetClass' => \kartik\widgets\SwitchInput::classname () 
-		];
-	?>
+				$modelAsset = new CurrentAsset ();
+				$attribs = $modelAsset->formAttribs;
+				$attribs ['attributes'] ['status'] = [ 
+						'type' => TabularForm::INPUT_WIDGET,
+						'widgetClass' => \kartik\widgets\SwitchInput::classname () 
+				];
+				?>
 	
 	<legend>Information Customer Prospect</legend>
 	<div class="row">
