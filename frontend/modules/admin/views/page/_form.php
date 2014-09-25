@@ -26,15 +26,12 @@ use dosamigos\ckeditor\CKEditor;
 // 		]
     ]); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => 80]) ?>
-
-    <?= $form->field($model, 'status')->textInput(['maxlength' => 10])?>
 	<?php
 	echo yii\bootstrap\Tabs::widget ( [ 
 			'items' => [ 
 					[ 
 							'label' => 'Indonesian',
-							'content' => $form->field ( $model, 'content_id' )->widget ( letyii\tinymce\Tinymce::className (), [ 
+							'content' => $form->field($model, 'title_id')->textInput(['maxlength' => 80]).$form->field ( $model, 'content_id' )->widget ( letyii\tinymce\Tinymce::className (), [ 
 									'options' => [ 
 											'id' => 'testid' 
 									],
@@ -53,7 +50,7 @@ use dosamigos\ckeditor\CKEditor;
 					],
 					[ 
 							'label' => 'English',
-							'content' => $form->field($model, 'content_en')->widget ( letyii\tinymce\Tinymce::className (), [ 
+							'content' => $form->field($model, 'title_en')->textInput(['maxlength' => 80]).$form->field($model, 'content_en')->widget ( letyii\tinymce\Tinymce::className (), [ 
 									'options' => [ 
 											'id' => 'testid' 
 									],
@@ -72,7 +69,7 @@ use dosamigos\ckeditor\CKEditor;
 					],
 					[ 
 							'label' => 'Japanese',
-							'content' => $form->field ( $model, 'content_jp' )->widget ( letyii\tinymce\Tinymce::className (), [ 
+							'content' => $form->field($model, 'title_jp')->textInput(['maxlength' => 80]).$form->field ( $model, 'content_jp' )->widget ( letyii\tinymce\Tinymce::className (), [ 
 									'options' => [ 
 											'id' => 'testid' 
 									],
@@ -94,7 +91,7 @@ use dosamigos\ckeditor\CKEditor;
 	?>
     
     <?=$form->field ( $model, 'thumbnail' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ] ] )?>
-
+	<?= $form->field($model, 'status')->textInput(['maxlength' => 10])?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

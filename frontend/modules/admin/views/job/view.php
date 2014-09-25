@@ -5,14 +5,14 @@ use yii\widgets\DetailView;
 
 /**
  * @var yii\web\View $this
- * @var frontend\models\Page $model
+ * @var frontend\modules\admin\models\JobVacation $model
  */
 
-$this->title = $model->title_id;
-$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Job Vacations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="page-view">
+<div class="job-vacation-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,14 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title_id',
-            'title_en',
-            'title_jp',
-            'content_id:html',
-            'content_en:html',
-            'content_jp:html',
-            'thumbnail',
-            'status',
+            'job_name',
+            'job_description:ntext',
+            'job_responsibility:ntext',
+            'req_gender',
+            'req_age',
+            'req_marital_status',
+            'req_last_education',
+            'req_majoring',
+            'req_min_experiance',
+            'contact',
+            'send_to',
+            'valid_until',
             'created_at',
             'created_by',
             'updated_at',

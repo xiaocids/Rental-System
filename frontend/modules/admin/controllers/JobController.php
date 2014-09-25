@@ -3,16 +3,16 @@
 namespace frontend\modules\admin\controllers;
 
 use Yii;
-use frontend\models\Page;
-use frontend\models\PageSearch;
+use frontend\modules\admin\models\JobVacation;
+use frontend\modules\admin\models\JobVacationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PageController implements the CRUD actions for Page model.
+ * JobController implements the CRUD actions for JobVacation model.
  */
-class PageController extends Controller
+class JobController extends Controller
 {
 	public $layout = 'dashboard';
     public function behaviors()
@@ -28,12 +28,12 @@ class PageController extends Controller
     }
 
     /**
-     * Lists all Page models.
+     * Lists all JobVacation models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PageSearch;
+        $searchModel = new JobVacationSearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
@@ -43,7 +43,7 @@ class PageController extends Controller
     }
 
     /**
-     * Displays a single Page model.
+     * Displays a single JobVacation model.
      * @param integer $id
      * @return mixed
      */
@@ -55,14 +55,13 @@ class PageController extends Controller
     }
 
     /**
-     * Creates a new Page model.
+     * Creates a new JobVacation model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Page;
-
+        $model = new JobVacation;
         if ($model->load(Yii::$app->request->post())) {
         	$model->created_at = date('Y-m-d h:m:s', time());
         	$model->created_by = 1;
@@ -76,7 +75,7 @@ class PageController extends Controller
     }
 
     /**
-     * Updates an existing Page model.
+     * Updates an existing JobVacation model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,8 +83,8 @@ class PageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-		
-       if ($model->load(Yii::$app->request->post())) {
+
+        if ($model->load(Yii::$app->request->post())) {
         	$model->updated_at = date('Y-m-d h:m:s', time());
         	$model->updated_by = 1;
         	if($model->save())
@@ -98,7 +97,7 @@ class PageController extends Controller
     }
 
     /**
-     * Deletes an existing Page model.
+     * Deletes an existing JobVacation model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +110,15 @@ class PageController extends Controller
     }
 
     /**
-     * Finds the Page model based on its primary key value.
+     * Finds the JobVacation model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Page the loaded model
+     * @return JobVacation the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Page::findOne($id)) !== null) {
+        if (($model = JobVacation::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

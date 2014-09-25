@@ -112,11 +112,15 @@ AdminAsset::register ( $this );
 								'items' => [ 
 										[ 
 												'label' => 'All Pages',
-												'url' => 'index.php/admin/page/index' 
+												'url' => [ 
+														'/admin/page/index' 
+												] 
 										],
 										[ 
 												'label' => 'Add New',
-												'url' => 'index.php/admin/page/create' 
+												'url' => [ 
+														'/admin/page/create' 
+												] 
 										] 
 								] 
 						],
@@ -130,12 +134,14 @@ AdminAsset::register ( $this );
 										[ 
 												'label' => 'All News',
 												'url' => [ 
-														'index.php/admin/news/index' 
+														'/admin/news/index' 
 												] 
 										],
 										[ 
 												'label' => 'Add News',
-												'url' => 'index.php/admin/news/create' 
+												'url' => [ 
+														'/admin/news/create' 
+												] 
 										] 
 								] 
 						],
@@ -149,16 +155,20 @@ AdminAsset::register ( $this );
 										[ 
 												'label' => 'All Job Vacation',
 												'url' => [ 
-														'index.php/admin/job/index' 
+														'/admin/job/index' 
 												] 
 										],
 										[ 
 												'label' => 'Add Job Vacation',
-												'url' => 'index.php/admin/job/create' 
+												'url' => [ 
+														'/admin/job/create' 
+												] 
 										],
 										[ 
 												'label' => 'All Applicant',
-												'url' => 'index.php/admin/applicant/index' 
+												'url' => [ 
+														'/admin/applicant/index' 
+												] 
 										] 
 								] 
 						],
@@ -190,7 +200,12 @@ AdminAsset::register ( $this );
 								'label' => 'Setting',
 								'url' => '#',
 								'items' => [ 
-										['label' => 'Admin', 'url' => ['/rbac/default']],
+										[ 
+												'label' => 'Admin',
+												'url' => [ 
+														'/rbac/default' 
+												] 
+										],
 										[ 
 												'label' => 'Assigment',
 												'url' => [ 

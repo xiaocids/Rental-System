@@ -8,7 +8,9 @@ use Yii;
  * This is the model class for table "web_page".
  *
  * @property integer $id
- * @property string $title
+ * @property string $title_id
+ * @property string $title_en
+ * @property string $title_jp
  * @property string $content_id
  * @property string $content_en
  * @property string $content_jp
@@ -35,11 +37,11 @@ class Page extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'status', 'created_at', 'created_by'], 'required'],
+            [['status', 'created_at', 'created_by'], 'required'],
             [['content_id', 'content_en', 'content_jp'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
-            [['title'], 'string', 'max' => 80],
+            [['title_id', 'title_en', 'title_jp'], 'string', 'max' => 80],
             [['thumbnail'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 10]
         ];
@@ -52,10 +54,12 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'content_id' => 'Content ID',
-            'content_en' => 'Content En',
-            'content_jp' => 'Content Jp',
+            'title_id' => 'Title Indonesia',
+            'title_en' => 'Title English',
+            'title_jp' => 'Title Japan',
+            'content_id' => 'Content Indonesia',
+            'content_en' => 'Content English',
+            'content_jp' => 'Content Japan',
             'thumbnail' => 'Thumbnail',
             'status' => 'Status',
             'created_at' => 'Created At',

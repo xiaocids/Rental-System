@@ -16,7 +16,7 @@ class PageSearch extends Page
     {
         return [
             [['id', 'created_by', 'updated_by'], 'integer'],
-            [['title', 'content_id', 'content_en', 'content_jp', 'thumbnail', 'status', 'created_at', 'updated_at'], 'safe'],
+            [['title_id', 'title_en', 'title_jp', 'content_id', 'content_en', 'content_jp', 'thumbnail', 'status', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -46,7 +46,9 @@ class PageSearch extends Page
             'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', 'title_id', $this->title_id])
+            ->andFilterWhere(['like', 'title_en', $this->title_en])
+            ->andFilterWhere(['like', 'title_jp', $this->title_jp])
             ->andFilterWhere(['like', 'content_id', $this->content_id])
             ->andFilterWhere(['like', 'content_en', $this->content_en])
             ->andFilterWhere(['like', 'content_jp', $this->content_jp])
