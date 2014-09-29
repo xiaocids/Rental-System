@@ -62,37 +62,4 @@ class CurrentAsset extends \yii\db\ActiveRecord
     {
         return $this->hasOne(BProspectCard::className(), ['id' => 'b_propect_id']);
     }
-    
-    public function getFormAttribs() {
-    	return [ 
-				'name' => [ 
-						'type' => TabularForm::INPUT_TEXT 
-				],
-				'brand_type' => [ 
-						'type' => TabularForm::INPUT_STATIC,
-						'label' => 'Brand Type',
-						'columnOptions' => [ 
-								'hAlign' => GridView::ALIGN_LEFT,
-								'width' => '90px' 
-						] 
-				],
-				
-				'unit' => [ 
-						'type' => TabularForm::INPUT_STATIC,
-						'label' => 'Unit',
-						'columnOptions' => [ 
-								'hAlign' => GridView::ALIGN_RIGHT,
-								'width' => '90px' 
-						] 
-				],
-				'manufacture_year' => [ 
-						'type' => TabularForm::INPUT_STATIC,
-						'label' => 'Manufactur of Year',
-						'columnOptions' => [ 
-								'hAlign' => GridView::ALIGN_RIGHT,
-								'width' => '90px' 
-						] 
-				] 
-		];
-    }
 }

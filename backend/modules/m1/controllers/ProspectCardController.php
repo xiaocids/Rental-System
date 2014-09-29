@@ -10,6 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\User;
 use mPDF;
+use \cinghie\tcpdf\TCPDF;
+use yii\base\Model;
+use app\modules\m1\models\CurrentAsset;
 
 /**
  * ProspectCardController implements the CRUD actions for ProspectCard model.
@@ -186,7 +189,7 @@ class ProspectCardController extends Controller {
 			$model->created_by = 1;
 			if ($model->save ( false )) {
 				return $this->redirect ( [ 
-						'view',
+						'update',
 						'id' => $model->id 
 				] );
 			} else {
@@ -205,22 +208,19 @@ class ProspectCardController extends Controller {
 	
 	public function actionPrint($id){
 		$this->layout = '//reports/noHeader';
-		$mpdf = new mPDF('utf-8', 'A4');
-		//$mpdf->setHeader($header,'O');
-		$mpdf->SetAutoFont(AUTOFONT_ALL);
-		$mpdf->SetTitle("Acme Trading Co. - Invoice");
-		$mpdf->SetHTMLFooter('<p style="font-size:xx-small;"><strong>Class = Classification</strong>: <strong>(I)</strong> Intoduce Letter, <strong>(QA)</strong> Qualification-Approach, <strong>(CON)</strong> Conviction, <strong>(QUO)</strong> Quotation, <strong>(D)</strong> Demonstration, <strong>(CL)</strong> Closing.</p>
-				<p style="font-size:xx-small;"><strong>V=Visit, C=Call</strong></p>');
-		$mpdf->WriteHTML($this->render( 'print', [
-				'model' => $this->findModel ( $id )
-		]));
-		
-		//$mpdf->WriteHTML('Hello<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>world!');
-		$mpdf->Output('#'.$this->findModel ( $id )->prospect_card_number.'.pdf', 'I');
-		
-// 		return $this->renderPartial ( 'print', [
-// 				'model' => $this->findModel ( $id )
-// 		] );
+			
+			$mpdf = new mPDF();
+			$mpdf->setHeader($header,'O');
+ 			$mpdf->SetAutoFont(AUTOFONT_ALL);
+ 			$mpdf->SetTitle("Acme Trading Co. - Invoice");
+ 			$mpdf->SetHTMLFooter('<p style="font-size:xx-small;"><strong>Class = Classification</strong>: <strong>(I)</strong> Intoduce Letter, <strong>(QA)</strong> Qualification-Approach, <strong>(CON)</strong> Conviction, <strong>(QUO)</strong> Quotation, <strong>(D)</strong> Demonstration, <strong>(CL)</strong> Closing.</p>
+ 			<p style="font-size:xx-small;"><strong>V=Visit, C=Call</strong></p>');
+			$mpdf->WriteHTML($this->render( 'print', [
+			'model' => $this->findModel ( $id )
+			]));
+			
+			$mpdf->Output('#'.$this->findModel ( $id )->prospect_card_number.'.pdf', 'I');
+			exit;		
 	}
 	
 	public function actionCompanyList($q = null) {
@@ -236,5 +236,31 @@ class ProspectCardController extends Controller {
 			$out[] = $d['company_name'];
 		}
 		echo Json::encode($out);
+	}
+	public function actionBatchUpdate($id) {
+		// retrieve items to be updated in a batch mode
+		// assuming each item is of model class 'Item'
+		$items = CurrentAsset::findAll ( [ 
+				'b_propect_id' => $id 
+		] );
+		//$items = $this->getItemsToUpdate ();
+		if (Model::loadMultiple ( $items, Yii::$app->request->post () ) && Model::validateMultiple ( $items )) {
+			$count = 0;
+			foreach ( $items as $item ) {
+				// populate and save records for each model
+				if ($item->save ()) {
+					// do something here after saving
+					$count ++;
+				}
+			}
+			Yii::$app->session->setFlash ( 'success', "Processed {$count} records successfully." );
+			return $this->redirect ( [ 
+					'index' 
+			] ); // redirect to your next desired page
+		} else {
+			return $this->render ( 'update', [ 
+					'model' => $items 
+			] );
+		}
 	}
 }
