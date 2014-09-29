@@ -50,7 +50,10 @@ return [
  					//'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
  					'class' => 'yii\rbac\DbManager',
  					'defaultRoles' => ['admin', 'author'],
- 				]
+ 				],
+ 				'request' => [
+ 					'cookieValidationKey' => 'Tkasj*^*adiujaslJL57sd',
+ 				],
 		],
 		'modules' => [ 
 				'admin' => [ 
