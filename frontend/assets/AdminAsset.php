@@ -13,16 +13,16 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppAsset extends AssetBundle
+class AdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/site.css',
-        'small_business/css/small-business.css'
+        'css/admin.css',
+        
     ];
     public $js = [
-    'small_business/js/small-business.js'
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

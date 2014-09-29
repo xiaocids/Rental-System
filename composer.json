@@ -29,7 +29,11 @@
 		"kartik-v/yii2-grid": "dev-master",
 		"kartik-v/yii2-builder": "dev-master",
 		"mdmsoft/yii2-autonumber": "dev-master",
-		"mpdf/mpdf": "dev-master"
+		"mpdf/mpdf": "dev-master",
+		"FortAwesome/Font-Awesome": "*",
+		"letyii/yii2-tinymce": "dev-master",
+		"2amigos/yii2-ckeditor-widget" : "*",
+		"mdmsoft/yii2-admin": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",
@@ -61,6 +65,10 @@
 
 			"frontend/runtime",
 			"frontend/web/assets"
-		]
+		],
+		"asset-installer-paths": {
+	        "npm-asset-library": "vendor/npm",
+	        "bower-asset-library": "vendor/bower"
+    	}
 	}
 }

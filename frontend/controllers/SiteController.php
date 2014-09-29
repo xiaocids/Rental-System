@@ -67,7 +67,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+    	$this->view->title = 'PT. Berlian Abadua Satu | Home';
+        return $this->render('index2');
     }
 
     public function actionLogin()
@@ -95,6 +96,7 @@ class SiteController extends Controller
 
     public function actionContact()
     {
+    	$this->layout = 'column1';
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -113,6 +115,7 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
+    	$this->layout = 'column2';
         return $this->render('about');
     }
 
