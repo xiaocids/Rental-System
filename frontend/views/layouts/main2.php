@@ -98,13 +98,13 @@ FontAwesomeAsset::register($this);
 				[ 
 						'label' => 'News Update',
 						'url' => [ 
-								'/site/news' 
+								'/news' 
 						] 
 				],
 				[ 
 						'label' => 'Carrier',
 						'url' => [ 
-								'/site/carrier' 
+								'/carrier' 
 						] 
 				],
 				[ 
