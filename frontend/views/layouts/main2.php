@@ -19,7 +19,7 @@ FontAwesomeAsset::register($this);
 <head>
 	<meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= Html::encode($this->title) ?></title>
+    <title>PT. Berlian Abadua Satu | <?= Html::encode($this->title) ?></title>
 
 	<?php $this->head() ?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -102,9 +102,9 @@ FontAwesomeAsset::register($this);
 						] 
 				],
 				[ 
-						'label' => 'Carrier',
+						'label' => 'Career',
 						'url' => [ 
-								'/carrier' 
+								'/career' 
 						] 
 				],
 				[ 

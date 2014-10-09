@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use frontend\modules\admin\models\JobVacation;
+use yii\helpers\ArrayHelper;
 
 /**
  * JobVacationSearch represents the model behind the search form about `frontend\modules\admin\models\JobVacation`.
@@ -61,4 +62,53 @@ class JobVacationSearch extends JobVacation
 
         return $dataProvider;
     }
+    
+    public function searchActive($params)
+    {
+    	$query = JobVacation::find()->where('valid_until > :valid', ['valid'=>date('Y-m-d')]);
+    
+    	$dataProvider = new ActiveDataProvider([
+    			'query' => $query,
+    			]);
+    
+    	if (!($this->load($params) && $this->validate())) {
+    		return $dataProvider;
+    	}
+    
+    	$query->andFilterWhere([
+    			'id' => $this->id,
+    			'req_age' => $this->req_age,
+    			'valid_until' => $this->valid_until,
+    			'created_at' => $this->created_at,
+    			'created_by' => $this->created_by,
+    			'updated_at' => $this->updated_at,
+    			'updated_by' => $this->updated_by,
+    			]);
+    
+    	$query->andFilterWhere(['like', 'job_name', $this->job_name])
+    	->andFilterWhere(['like', 'job_description', $this->job_description])
+    	->andFilterWhere(['like', 'job_responsibility', $this->job_responsibility])
+    	->andFilterWhere(['like', 'req_gender', $this->req_gender])
+    	->andFilterWhere(['like', 'req_marital_status', $this->req_marital_status])
+    	->andFilterWhere(['like', 'req_last_education', $this->req_last_education])
+    	->andFilterWhere(['like', 'req_majoring', $this->req_majoring])
+    	->andFilterWhere(['like', 'req_min_experiance', $this->req_min_experiance])
+    	->andFilterWhere(['like', 'contact', $this->contact])
+    	->andFilterWhere(['like', 'send_to', $this->send_to]);
+    
+    	return $dataProvider;
+    }
+    
+    
+    public static function listJobActive()
+    {
+    	$today = date('Y-m-d');
+    	$result = ArrayHelper::map(JobVacation::find()->where('valid_until > :valid', ['valid'=>date('Y-m-d')])->asArray()->all(), 'id', 'job_name');
+    	if(count($result)>0){
+    		return $result;
+    	}else{
+    		return ['0'=>'-Select Position'];
+    	}
+    }
+    
 }

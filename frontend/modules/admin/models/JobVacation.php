@@ -78,4 +78,23 @@ class JobVacation extends \yii\db\ActiveRecord
             'updated_by' => 'Updated By',
         ];
     }
+    
+    public static function getMaritalStatus($param)
+    {
+    	$status = [
+			'S'=>'Single',
+			'M'=>'Maried',
+    	];
+    	return $status[$param];
+    }
+    
+    public static function getReqGender($param)
+    {
+    	$genders = [
+			'M'=>'Male',
+			'F'=>'Female',
+			'MF'=>'Male/Female'
+    	];
+    	return $genders[$param];
+    }
 }

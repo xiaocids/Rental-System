@@ -7,9 +7,9 @@ use yii\helpers\Html;
  * @var frontend\modules\admin\models\JobVacation $model
  */
 
-$this->title = 'Update Job Vacation: ' . $model->id;
+$this->title = 'Update Job Vacation: ' . $model->job_name;
 $this->params['breadcrumbs'][] = ['label' => 'Job Vacations', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->job_name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="job-vacation-update">

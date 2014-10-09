@@ -65,14 +65,14 @@
 						] 
 				] 
 		];
-		echo kartik\widgets\SideNav::widget ( [ 
-				'items' => $menuItems,
-				'heading' => 'Options',
-				'options'=>['class'=>''],
-				'headingOptions' => [ 
-						'class' => 'head-style' 
-				] 
-		] );
+// 		echo kartik\widgets\SideNav::widget ( [ 
+// 				'items' => $menuItems,
+// 				'heading' => 'Options',
+// 				'options'=>['class'=>''],
+// 				'headingOptions' => [ 
+// 						'class' => 'head-style' 
+// 				] 
+// 		] );
 		// echo yii\bootstrap\Nav::widget ( [
 		// 'heading' => 'Options',
 		// 'options' => [

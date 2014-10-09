@@ -39,7 +39,10 @@ return [
 				],
 				'errorHandler' => [ 
 						'errorAction' => 'site/error' 
-				]
+				],
+				'request' => [
+						'cookieValidationKey' => 'Tkasj*^*adiujaslJL57sd',
+				],
 		],
 		'params' => $params 
 ];

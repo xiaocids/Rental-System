@@ -3,18 +3,17 @@
 namespace frontend\modules\admin\controllers;
 
 use Yii;
-use frontend\modules\admin\models\JobVacation;
-use frontend\modules\admin\models\JobVacationSearch;
+use frontend\modules\admin\models\Applicant;
+use frontend\modules\admin\models\ApplicantSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * JobController implements the CRUD actions for JobVacation model.
+ * ApplicantController implements the CRUD actions for Applicant model.
  */
-class JobController extends Controller
+class ApplicantController extends Controller
 {
-	public $layout = 'dashboard';
     public function behaviors()
     {
         return [
@@ -28,22 +27,22 @@ class JobController extends Controller
     }
 
     /**
-     * Lists all JobVacation models.
+     * Lists all Applicant models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new JobVacationSearch;
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $searchModel = new ApplicantSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single JobVacation model.
+     * Displays a single Applicant model.
      * @param integer $id
      * @return mixed
      */
@@ -55,21 +54,16 @@ class JobController extends Controller
     }
 
     /**
-     * Creates a new JobVacation model.
+     * Creates a new Applicant model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new JobVacation;
-        $model->contact = '021-47899586';
-        $model->send_to ='hr-recruitment@bas.co.id';
-        
-        if ($model->load(Yii::$app->request->post())) {
-        	$model->created_at = date('Y-m-d h:m:s', time());
-        	$model->created_by = 1;
-        	if($model->save())
-            	return $this->redirect(['view', 'id' => $model->id]);
+        $model = new Applicant();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -78,7 +72,7 @@ class JobController extends Controller
     }
 
     /**
-     * Updates an existing JobVacation model.
+     * Updates an existing Applicant model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -86,13 +80,9 @@ class JobController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->contact = '021-47899586';
-        $model->send_to ='hr-recruitment@bas.co.id';
-        if ($model->load(Yii::$app->request->post())) {
-        	$model->updated_at = date('Y-m-d h:m:s', time());
-        	$model->updated_by = 1;
-        	if($model->save())
-            	return $this->redirect(['view', 'id' => $model->id]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,7 +91,7 @@ class JobController extends Controller
     }
 
     /**
-     * Deletes an existing JobVacation model.
+     * Deletes an existing Applicant model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,15 +104,15 @@ class JobController extends Controller
     }
 
     /**
-     * Finds the JobVacation model based on its primary key value.
+     * Finds the Applicant model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return JobVacation the loaded model
+     * @return Applicant the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = JobVacation::findOne($id)) !== null) {
+        if (($model = Applicant::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

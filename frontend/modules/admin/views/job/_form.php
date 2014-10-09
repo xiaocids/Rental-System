@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /**
  * @var yii\web\View $this
@@ -58,17 +59,9 @@ use kartik\widgets\ActiveForm;
 		    <?= $form->field($model, 'contact')->textInput(['maxlength' => 100])?>
 		
 		    <?= $form->field($model, 'send_to')->textInput(['maxlength' => 100])?>
-			<?php echo kartik\widgets\DatePicker::widget ( [ 
-					'model' => $model,
-					'attribute' => 'valid_until',
-					'options' => [ 
-							'placeholder' => 'Enter birth date ...' 
-					],
-					'pluginOptions' => [ 
-							'autoClose' => true 
-					] 
-			] );
-			?>
+		    
+		    <?= $form->field($model, 'valid_until')->widget(DatePicker::className(),['language' => 'en', 'dateFormat' => 'yyyy-MM-dd','options'=>['class' => 'form-control']])?>
+			
 		    <?php //$form->field ( $model, 'valid_until' ) ->widget(kartik\widgets\DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Expired Until ...' ],'pluginOptions' => [ 'autoclose' => true ] ] ) ?>
 		</div>
 	</div>

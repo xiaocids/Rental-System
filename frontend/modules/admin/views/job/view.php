@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
  * @var frontend\modules\admin\models\JobVacation $model
  */
 
-$this->title = $model->id;
+$this->title = 'View :'.$model->job_name;
 $this->params['breadcrumbs'][] = ['label' => 'Job Vacations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'job_name',
-            'job_description:ntext',
-            'job_responsibility:ntext',
+            'job_description:html',
+            'job_responsibility:html',
             'req_gender',
             'req_age',
             'req_marital_status',

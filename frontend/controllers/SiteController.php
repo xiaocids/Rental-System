@@ -67,7 +67,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-    	$this->view->title = 'PT. Berlian Abadua Satu | Home';
+    	$this->view->title = 'Home';
         return $this->render('index2');
     }
 
