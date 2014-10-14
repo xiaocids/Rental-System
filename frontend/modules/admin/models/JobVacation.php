@@ -60,7 +60,7 @@ class JobVacation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'job_name' => 'Job Vacation Name',
+            'job_name' => 'Position',
             'job_description' => 'Job Description',
             'job_responsibility' => 'Job Responsibility',
             'req_gender' => 'Gender',

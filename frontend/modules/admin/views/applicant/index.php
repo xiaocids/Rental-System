@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use frontend\modules\admin\models\JobVacationSearch;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\admin\models\ApplicantSearch */
@@ -25,9 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'applicant_id',
-            'job_id',
+           	[
+           		'attribute' => 'job.job_name', 
+           		'header'=>'Job Name',
+            	'filter' => Html::activeDropDownList($searchModel, 'job_id', JobVacationSearch::listJobActive(),['class'=>'form-control','empty'=>'-Select','prompt'=>'-Select']),
+			],
             'full_name',
             'age',
             // 'gender',

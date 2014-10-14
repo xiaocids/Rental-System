@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?= Html::activeDropDownList($model,'id',JobVacationSearch::listJobActive(),['class'=>'form-control', 'onchange'=>'javascript: redirect(this)' /*,'prompt'=>'-Select', 'empty'=>'-Select'*/])?>		
 		</div>
 	</div>
-    
+    <br>
     <legend>Job Description</legend>
     <?= Html::decode($model->job_description)?>
     
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <p class="pull-right">
         <?= Html::a('Apply Now', ['apply', 'id' => $model->id], ['class' => 'btn btn-red']) ?>
-        <?= Html::a('Tell Friend', ['tell-a-friend', 'id' => $model->id], [ 'class' => 'btn btn-primary']) ?>
+        <?= Html::a('Tell Friend', ['tell-friend'], [ 'class' => 'btn btn-primary']) ?>
     </p>
 
 </div>

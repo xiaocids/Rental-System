@@ -52,7 +52,7 @@ class CareerController extends \yii\web\Controller
 	}
 	
 	public function actionApply($id){
-		//$this->layout = 'column1';
+		$this->layout = 'column1';
 		
 		$job = $this->findModel($id);
 		
@@ -64,7 +64,7 @@ class CareerController extends \yii\web\Controller
 			$model->applicant_id = 'AP001';
 			$model->created_at = date('Y-m-d h:m:s', time());
 			if($model->save()){
-				return $this->redirect(['view', 'id' => $model->id]);
+				return $this->redirect(['success']);
 			}else{
 				return $this->render('apply', [
 						'model' => $model,
@@ -79,5 +79,14 @@ class CareerController extends \yii\web\Controller
 					]);
 		}
 	}
+	
+	public function actionSuccess()
+	{
+		return $this->render('success');
+	}
 
+	public function actionTellFriend()
+	{
+		return $this->render('tellFriend');
+	}
 }

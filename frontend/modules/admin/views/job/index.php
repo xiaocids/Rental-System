@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use frontend\modules\admin\models\JobVacation;
 
 /**
  * @var yii\web\View $this
@@ -32,7 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'job_name',
             //'job_description:ntext',
             //'job_responsibility:ntext',
-            'req_gender',
+            //'req_gender',
+            
+            [
+				'attribute'=>'req_gender',
+				'value'=>function ($model){
+            		echo $model->req_gender;
+            	},
+            ],
             'req_age',
             // 'req_marital_status',
            	'req_last_education',
@@ -40,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'req_min_experiance',
             // 'contact',
             // 'send_to',
-            'valid_until',
+            'valid_until:date',
             // 'created_at',
             // 'created_by',
             // 'updated_at',

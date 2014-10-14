@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use frontend\modules\admin\models\JobVacationSearch;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\admin\models\Applicant */
@@ -14,7 +15,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'applicant_id')->textInput(['maxlength' => 50]) ?>
 
-    <?= $form->field($model, 'job_id')->textInput() ?>
+   	<?= $form->field($model, 'job_id')->dropDownList(JobVacationSearch::listJobActive(),['class'=>'form-control','prompt'=>'-Select', 'empty'=>'-Select'])?>
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => 70]) ?>
 

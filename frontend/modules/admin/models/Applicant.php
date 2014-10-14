@@ -87,40 +87,36 @@ use Yii;
  */
 class Applicant extends \yii\db\ActiveRecord
 {
+	public $verificationCode;
     /**
      * @inheritdoc
      */
-	public $job_id;
-	public $verificationCode;
-	
-	public function behaviors()
-	{
-		return [
-		[
-		'class' => 'mdm\autonumber\Behavior',
-		'attribute' => 'applicant_id', // required
-		//'group' => $this->id_branch, // optional
-		'value' => 'AP?' , // format auto number. '?' will be replaced with generated number
-		'digit' => 5// optional, default to null.
-		],
-		];
-	}
-	
     public static function tableName()
     {
         return 'web_applicant';
     }
+
+    // 	public function behaviors()
+    // 	{
+    // 		return [
+    // 		[
+    // 		'class' => 'mdm\autonumber\Behavior',
+    // 		'attribute' => 'applicant_id', // required
+    // 		//'group' => $this->id_branch, // optional
+    // 		'value' => 'AP?' , // format auto number. '?' will be replaced with generated number
+    // 		'digit' => 5// optional, default to null.
+    // 		],
+    // 		];
+    // 	}
     
-   
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['applicant_id', 'job_id', 'full_name', 'age', 'gender', 'born_date', 'marital_status', 'photo', 'phone', 'mobile', 'home_address', 'email', 'education_level1', 'university_name1', 'majoring1', 'join_graduate_year1', 'gpa1', 'education_level2', 'university_name2', 'majoring2', 'join_graduate_year2', 'gpa2', 'education_level3', 'university_name3', 'majoring3', 'join_graduate_year3', 'gpa3', 'term_condition', 'created_at','verificationCode'], 'required'],
-            [['job_id', 'age', 'term_condition', 'job_id'], 'integer'],
-            ['verificationCode','captcha'],
+            [['applicant_id', 'job_id', 'full_name', 'age', 'gender', 'born_date', 'marital_status', 'photo', 'phone', 'mobile', 'home_address', 'email', 'education_level1', 'university_name1', 'majoring1', 'join_graduate_year1', 'gpa1', 'education_level2', 'university_name2', 'majoring2', 'join_graduate_year2', 'gpa2', 'education_level3', 'university_name3', 'majoring3', 'join_graduate_year3', 'gpa3', 'term_condition', 'created_at'], 'required'],
+            [['job_id', 'age', 'term_condition'], 'integer'],
             [['born_date', 'created_at', 'updated_at'], 'safe'],
             [['home_address', 'other_skill'], 'string'],
             [['applicant_id', 'org_position1', 'org_position2', 'org_position3'], 'string', 'max' => 50],
@@ -224,5 +220,9 @@ class Applicant extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+    
+    public function getJob(){
+    	return $this->hasOne(JobVacation::className(), ['id' => 'job_id']);
     }
 }

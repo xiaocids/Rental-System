@@ -33,9 +33,9 @@ $this->params ['breadcrumbs'] [] = $this->title;
 // 		] 
 	] ); ?>
 	 <?php 
-     if(isset($model)){
-    	echo $form->errorSummary($model);
-     }
+//      if(isset($model)){
+//     	echo $form->errorSummary($model);
+//      }
      ?>
 	<br>
 	<br>
