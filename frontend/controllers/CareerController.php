@@ -58,7 +58,8 @@ class CareerController extends \yii\web\Controller
 		
 		$model = new Applicant;
 		$model->job_id = $id;
-		$model->phone ='ada.jpg';
+		
+		$model->photo ='ada.jpg';
 		
 		if ($model->load(Yii::$app->request->post())) {
 			$model->applicant_id = 'AP001';

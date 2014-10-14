@@ -154,13 +154,8 @@ FontAwesomeAsset::register($this);
 						<h4>Contact us</h4>
 						<p>PT. BERLIAN ABADUA SATU KTB Annex Building 1st Floor Jl. A.
 							Yani, Pulomas Jakarta Timur 13210 DIa Car Rental Ph : (021)
-							47866081 / (021) 47899583 No Hp : 0811 - 1096 040 (Ms. Pradnya)
-
-							0811 - 9797 890 (Ms. Nancy) Pin BB : 25BD96B0 (Ms. Pradnya)
-
-							2B5C90CA (Ms. Nancy) Emergency Call Ph : 0815-10742121 Fax :
-							(021) 47866082 / 83 Email : carrental@bas.co.id Used Car Sales Ph
-							: (021) 7548388, (021) 7457001</p>
+							47866081</p>
+							<a href="<?=Url::toRoute('/page/contact-us')?>" class="btn btn-red">More</a>
 					</div>
 				</div>
 

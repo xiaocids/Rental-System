@@ -172,13 +172,13 @@ footer .col.col-social-icons i {
 	border: 1px solid #DF1119;
 }
 
-.btn-red:hover {
-	color: #FFF;
+.btn-red:hover, btn-red:active {
+	color: #FCFCFC;
 	background-color: #D5070F;
 	border-color: #D5070F;
+	text-decoration: none;
 }
 
-  
 .tagline {
 	color: #FFF;
 	background-color: #616161;

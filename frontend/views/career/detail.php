@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<br>
 	<div class="row">
 		<div class="col-md-6">
+			<?= Html::label('Search Position','jobvacation-id')?>
 			<?= Html::activeDropDownList($model,'id',JobVacationSearch::listJobActive(),['class'=>'form-control', 'onchange'=>'javascript: redirect(this)' /*,'prompt'=>'-Select', 'empty'=>'-Select'*/])?>		
 		</div>
 	</div>
