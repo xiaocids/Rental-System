@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use frontend\modules\admin\models\JobVacationSearch;
+use frontend\modules\admin\models\JobVacation;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\admin\models\ApplicantSearch */
@@ -36,14 +37,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'full_name',
             'age',
             // 'gender',
-            // 'born_date',
+            'born_date:date',
+            [
+	            'attribute' => 'marital_status',
+	            'filter' => Html::activeDropDownList($searchModel, 'marital_status', ['S'=>'Single', 'M'=>'Married'],['class'=>'form-control','empty'=>'-Select','prompt'=>'-Select']),
+	            'value' => function($data) { return JobVacation::getMaritalStatus($data->marital_status); },
+			],
             // 'marital_status',
             // 'photo',
             // 'phone',
             // 'mobile',
             // 'home_address:ntext',
             // 'email:email',
-            // 'education_level1',
+            'education_level1',
             // 'university_name1',
             // 'majoring1',
             // 'join_graduate_year1',

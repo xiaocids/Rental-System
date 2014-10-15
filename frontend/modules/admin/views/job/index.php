@@ -37,15 +37,27 @@ $this->params['breadcrumbs'][] = $this->title;
             
             [
 				'attribute'=>'req_gender',
-				'value'=>function ($model){
-            		echo $model->req_gender;
+				'value'=>function ($data){
+            		return JobVacation::getReqGender($data->req_gender);
             	},
             ],
-            'req_age',
+            [
+            'attribute'=>'req_age',
+            'value'=>function ($data){
+            		return $data->req_age.' years';
+            	},
+            ],
+            //'req_age',
             // 'req_marital_status',
            	'req_last_education',
             'req_majoring',
-            'req_min_experiance',
+            [
+            'attribute'=>'req_min_experiance',
+            'value'=>function ($data){
+            	return $data->req_min_experiance.' years';
+            },
+            ],
+            //'req_min_experiance',
             // 'contact',
             // 'send_to',
             'valid_until:date',

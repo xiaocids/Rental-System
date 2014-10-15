@@ -28,7 +28,7 @@ AdminAsset::register ( $this );
     <?php
 				NavBar::begin ( [ 
 						'brandLabel' => 'My Company',
-						'brandUrl' => Yii::$app->homeUrl,
+						'brandUrl' => Yii::$app->homeUrl.'/admin',
 						'options' => [ 
 								'class' => 'navbar-inverse navbar-fixed-top' 
 						] 
@@ -43,7 +43,7 @@ AdminAsset::register ( $this );
 						[ 
 								'label' => 'Dashboard',
 								'url' => [ 
-										'/administrator' 
+										'/admin' 
 								] 
 						],
 						[ 

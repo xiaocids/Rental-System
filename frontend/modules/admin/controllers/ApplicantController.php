@@ -69,6 +69,7 @@ class ApplicantController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+            	'job' => '',
             ]);
         }
     }
@@ -83,11 +84,22 @@ class ApplicantController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+    if ($model->load(Yii::$app->request->post())) {
+			$model->applicant_id = 'AP001';
+			$model->created_at = date('Y-m-d h:m:s', time());
+			if($model->save()){
+				return $this->redirect(['view', 'id'=>$model->id]);
+			}else{
+				return $this->render('apply', [
+						'model' => $model,
+						'job' => $job,
+						]);
+			}
+				
+		} else {
             return $this->render('update', [
                 'model' => $model,
+            	'job' => $model->job->job_name,
             ]);
         }
     }
