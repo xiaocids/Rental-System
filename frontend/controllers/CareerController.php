@@ -88,6 +88,12 @@ class CareerController extends \yii\web\Controller
 
 	public function actionTellFriend()
 	{
+		Yii::$app->mailer->compose()
+		->setFrom('xiaocids@live.com')
+		->setTo('rosid@bas.co.id')
+		->setSubject('Test Email')
+		->setTextBody('Plain text content')
+		->send();
 		return $this->render('tellFriend');
 	}
 }

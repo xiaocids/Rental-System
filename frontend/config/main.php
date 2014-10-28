@@ -54,6 +54,9 @@ return [
  				'request' => [
  					'cookieValidationKey' => 'Tkasj*^*adiujaslJL57sd',
  				],
+ 				'mailer' => [
+ 					'class' => 'yii\swiftmailer\Mailer',
+ 				],
 		],
 		'modules' => [ 
 				'admin' => [ 
